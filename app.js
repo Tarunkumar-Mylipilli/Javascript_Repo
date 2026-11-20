@@ -177,6 +177,24 @@ const chartConfigs = {
         borderRadius: 4
       }
     ]
+  },
+  categories: {
+    title: "IT Support Tickets: Volume Breakdown by Issue Category & Bottlenecks",
+    badge: "Operational Distribution",
+    label1: "System Login Issues", val1: "42%",
+    label2: "Hardware Requests", val2: "28%",
+    label3: "Network Incidents", val3: "18%",
+    label4: "Software Installs", val4: "12%",
+    type: "bar",
+    labels: ["System Login / Auth", "Hardware Failure", "Network & VPN", "Software & Licensing", "Access Permissions"],
+    datasets: [
+      {
+        label: "Total Tickets Handled",
+        data: [40949, 27299, 17549, 11699, 5849],
+        backgroundColor: ["#00E5C3", "#38bdf8", "#818cf8", "#c084fc", "#f43f5e"],
+        borderRadius: 4
+      }
+    ]
   }
 };
 
@@ -405,6 +423,153 @@ const initContactForm = () => {
 };
 
 // ==========================================
+// Interactive SQL Query Sandbox Controller
+// ==========================================
+const sqlQueries = {
+  lag: {
+    title: "Season-over-Season Run Growth (LAG)",
+    sql: `SELECT 
+    season,
+    batsman_name,
+    SUM(batsman_runs) AS total_runs,
+    ROUND(SUM(batsman_runs) * 100.0 / NULLIF(COUNT(ball_id), 0), 2) AS strike_rate,
+    LAG(SUM(batsman_runs), 1) OVER (
+        PARTITION BY batsman_name ORDER BY season
+    ) AS prev_season_runs
+FROM rcb_deliveries_fact
+GROUP BY season, batsman_name
+HAVING total_runs > 400
+ORDER BY season DESC, total_runs DESC;`,
+    headers: ["Season", "Batsman", "Total Runs", "Strike Rate", "Prev Season Runs", "YoY Growth"],
+    rows: [
+      ["2016", "V Kohli", "973", "152.03", "505", "+92.6%"],
+      ["2016", "AB de Villiers", "687", "168.79", "513", "+33.9%"],
+      ["2015", "AB de Villiers", "513", "175.08", "395", "+29.8%"],
+      ["2015", "V Kohli", "505", "130.82", "359", "+40.6%"],
+      ["2014", "AB de Villiers", "395", "158.40", "360", "+9.7%"]
+    ],
+    executionTime: "12ms",
+    rowCount: "5 rows returned"
+  },
+  economy: {
+    title: "Bowler Economy at Chinnaswamy (DENSE_RANK)",
+    sql: `WITH VenueStats AS (
+    SELECT 
+        venue,
+        bowler_name,
+        COUNT(CASE WHEN is_wicket = 1 THEN 1 END) AS wickets,
+        ROUND(SUM(runs_conceded) * 6.0 / NULLIF(COUNT(ball_id), 0), 2) AS economy
+    FROM rcb_bowling_records
+    WHERE venue = 'M Chinnaswamy Stadium'
+    GROUP BY venue, bowler_name
+    HAVING COUNT(ball_id) >= 120
+)
+SELECT 
+    bowler_name,
+    wickets,
+    economy,
+    DENSE_RANK() OVER (ORDER BY economy ASC, wickets DESC) AS venue_rank
+FROM VenueStats
+LIMIT 5;`,
+    headers: ["Bowler Name", "Wickets", "Economy Rate", "Venue Rank", "Verdict"],
+    rows: [
+      ["YS Chahal", "51", "7.62", "1", "Elite Control"],
+      ["MA Starc", "28", "7.16", "2", "Strike Pacer"],
+      ["S Aravind", "26", "8.14", "3", "Impact Seamer"],
+      ["HV Patel", "23", "8.45", "4", "Middle Overs"],
+      ["V Kohli (Part-time)", "4", "8.90", "5", "Rotational"]
+    ],
+    executionTime: "18ms",
+    rowCount: "5 rows returned"
+  },
+  boundary: {
+    title: "Powerplay Boundary Contribution % (CASE WHEN)",
+    sql: `SELECT 
+    season,
+    SUM(batsman_runs) AS powerplay_runs,
+    SUM(CASE WHEN batsman_runs = 4 THEN 4 ELSE 0 END) AS runs_from_fours,
+    SUM(CASE WHEN batsman_runs = 6 THEN 6 ELSE 0 END) AS runs_from_sixes,
+    ROUND(SUM(CASE WHEN batsman_runs IN (4, 6) THEN batsman_runs ELSE 0 END) * 100.0 / NULLIF(SUM(batsman_runs), 0), 2) AS boundary_pct
+FROM rcb_deliveries_fact
+WHERE over_num BETWEEN 1 AND 6
+GROUP BY season
+ORDER BY season DESC;`,
+    headers: ["Season", "Powerplay Runs", "Runs from 4s", "Runs from 6s", "Boundary %"],
+    rows: [
+      ["2016", "882", "516", "216", "82.99%"],
+      ["2015", "746", "412", "180", "79.35%"],
+      ["2014", "698", "380", "156", "76.79%"],
+      ["2013", "712", "396", "168", "79.21%"]
+    ],
+    executionTime: "15ms",
+    rowCount: "4 rows returned"
+  }
+};
+
+const initSqlSandbox = () => {
+  const selector = document.getElementById('sqlQuerySelector');
+  const runBtn = document.getElementById('runSqlBtn');
+  const codeDisplay = document.getElementById('sqlCodeDisplay');
+  const statusText = document.getElementById('queryStatusText');
+  const statsInfo = document.getElementById('queryStatsInfo');
+  const table = document.getElementById('sqlResultTable');
+
+  if (!selector || !codeDisplay || !table) return;
+
+  const renderTable = (queryKey) => {
+    const data = sqlQueries[queryKey] || sqlQueries.lag;
+    codeDisplay.textContent = data.sql;
+
+    if (statusText) {
+      statusText.textContent = "Executing...";
+      statusText.className = "text-[#00E5C3] animate-pulse";
+    }
+
+    setTimeout(() => {
+      if (statusText) {
+        statusText.textContent = "Success (200 OK)";
+        statusText.className = "text-emerald-400";
+      }
+      if (statsInfo) {
+        statsInfo.textContent = `Executed in ${data.executionTime} • ${data.rowCount}`;
+      }
+
+      let headerHtml = `<thead class="bg-white/5 border-b border-white/10 text-zinc-300"><tr>`;
+      data.headers.forEach(h => {
+        headerHtml += `<th class="px-4 py-2.5">${h}</th>`;
+      });
+      headerHtml += `</tr></thead>`;
+
+      let bodyHtml = `<tbody class="divide-y divide-white/5 text-zinc-400">`;
+      data.rows.forEach(r => {
+        bodyHtml += `<tr class="hover:bg-white/[0.02] transition">`;
+        r.forEach((cell, idx) => {
+          const isAccent = idx === 0 || idx === r.length - 1;
+          bodyHtml += `<td class="px-4 py-2.5 ${isAccent ? 'text-white font-semibold' : ''}">${cell}</td>`;
+        });
+        bodyHtml += `</tr>`;
+      });
+      bodyHtml += `</tbody>`;
+
+      table.innerHTML = headerHtml + bodyHtml;
+    }, 180);
+  };
+
+  selector.addEventListener('change', (e) => {
+    renderTable(e.target.value);
+  });
+
+  if (runBtn) {
+    runBtn.addEventListener('click', () => {
+      renderTable(selector.value);
+    });
+  }
+
+  // Initial render
+  renderTable('lag');
+};
+
+// ==========================================
 // Copy Email Button
 // ==========================================
 const initCopyEmail = () => {
@@ -445,6 +610,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   initModals();
+  initSqlSandbox();
   initContactForm();
   initCopyEmail();
 
