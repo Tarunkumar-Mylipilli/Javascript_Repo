@@ -1,15 +1,17 @@
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
 
 :root {
   --bg-primary: #080B12;
-  --bg-secondary: #0D131F;
+  --bg-secondary: #101722;
   --bg-card: rgba(16, 23, 34, 0.75);
+  --bg-card-hover: rgba(22, 32, 48, 0.95);
   --border-subtle: rgba(255, 255, 255, 0.08);
   --border-hover: rgba(0, 229, 195, 0.35);
   --accent-teal: #00E5C3;
   --accent-purple: #8B5CF6;
   --text-main: #F5F7FA;
   --text-muted: #9CA3AF;
+  --text-dim: #6B7280;
 }
 
 * {
@@ -49,17 +51,19 @@ body {
   z-index: 0;
 }
 
-/* Premium Card */
-.pro-card {
+/* Premium Card with Restrained Glassmorphism */
+.portfolio-card {
   background: var(--bg-card);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
   border: 1px solid var(--border-subtle);
   border-radius: 1.25rem;
   transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
 }
 
-.pro-card:hover {
+.portfolio-card:hover {
+  background: var(--bg-card-hover);
   border-color: var(--border-hover);
   transform: translateY(-3px);
   box-shadow: 0 16px 36px -12px rgba(0, 0, 0, 0.7),
@@ -72,6 +76,18 @@ body {
 
 .card-ticket {
   border-top: 3px solid var(--accent-teal);
+}
+
+.teal-pill {
+  background: rgba(0, 229, 195, 0.08);
+  border: 1px solid rgba(0, 229, 195, 0.25);
+  color: var(--accent-teal);
+}
+
+.purple-pill {
+  background: rgba(139, 92, 246, 0.08);
+  border: 1px solid rgba(139, 92, 246, 0.25);
+  color: #a78bfa;
 }
 
 /* Infinite Marquee */
@@ -88,7 +104,7 @@ body {
   justify-content: space-around;
   min-width: 100%;
   gap: 2rem;
-  animation: scroll-marquee 30s linear infinite;
+  animation: scroll-marquee 32s linear infinite;
 }
 @keyframes scroll-marquee {
   from { transform: translateX(0); }
@@ -108,4 +124,11 @@ body {
 }
 ::-webkit-scrollbar-thumb:hover {
   background: var(--accent-teal);
+}
+
+/* Modal styling */
+.modal-overlay {
+  background: rgba(8, 11, 18, 0.88);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
 }

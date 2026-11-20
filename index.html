@@ -6,7 +6,7 @@
   <title>Tarunkumar Mylipilli — Data Analyst</title>
   <meta name="description" content="Portfolio of Tarunkumar Mylipilli. Data Analyst with past experience in software development. Featuring RCB IPL SQL Analytics and IT Support Ticket Excel Dashboards.">
   
-  <!-- Tailwind CSS -->
+  <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -16,7 +16,7 @@
           colors: {
             brand: {
               dark: '#080B12',
-              surface: '#0D131F',
+              surface: '#101722',
               teal: '#00E5C3',
               purple: '#8B5CF6',
               text: '#F5F7FA',
@@ -44,20 +44,25 @@
   <div class="ambient-glow"></div>
 
   <!-- ========================================== -->
-  <!-- NAVIGATION BAR (Fixed, Clean, Aligned)     -->
+  <!-- NAVIGATION BAR (Properly Padded & Aligned)  -->
   <!-- ========================================== -->
-  <header class="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-[#080B12]/85 border-b border-white/5">
-    <div class="max-w-6xl mx-auto px-6 h-18 flex items-center justify-between">
+  <header class="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-[#080B12]/90 border-b border-white/5">
+    <div class="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
       
       <!-- TM Logo -->
-      <a href="#hero" class="flex items-center gap-2.5">
-        <div class="w-9 h-9 rounded-lg bg-[#00E5C3]/10 border border-[#00E5C3]/30 flex items-center justify-center font-display font-bold text-[#00E5C3] text-sm">
-          TM
+      <a href="#hero" class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-[#00E5C3] to-[#8B5CF6] p-[1px] shadow-lg shadow-teal-500/10">
+          <div class="w-full h-full bg-[#080B12] rounded-xl flex items-center justify-center font-display font-bold text-[#00E5C3] text-sm">
+            TM
+          </div>
         </div>
-        <span class="font-display font-bold text-sm tracking-tight text-white">Tarunkumar Mylipilli</span>
+        <div class="flex flex-col">
+          <span class="font-display font-bold text-sm tracking-tight text-white leading-tight">Tarunkumar Mylipilli</span>
+          <span class="text-[11px] font-mono text-zinc-400">Data Analyst</span>
+        </div>
       </a>
 
-      <!-- Clean Links -->
+      <!-- Desktop Nav -->
       <nav class="hidden md:flex items-center gap-7 text-xs font-medium text-zinc-400">
         <a href="#hero" class="hover:text-white transition">Home</a>
         <a href="#about" class="hover:text-white transition">About</a>
@@ -68,8 +73,9 @@
         <a href="#contact" class="hover:text-white transition">Contact</a>
       </nav>
 
+      <!-- Action Button -->
       <div class="flex items-center gap-3">
-        <a href="assets/Tarunkumar_Mylipilli_Resume.pdf" download="Tarunkumar_Mylipilli_Resume.pdf" class="hidden sm:inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg text-xs font-semibold bg-white text-black hover:bg-zinc-200 transition">
+        <a href="assets/Tarunkumar_Mylipilli_Resume.pdf" download="Tarunkumar_Mylipilli_Resume.pdf" class="hidden sm:inline-flex items-center gap-1.5 px-4 py-2 rounded-lg text-xs font-semibold bg-white text-black hover:bg-zinc-200 transition">
           <i data-lucide="download" class="w-3.5 h-3.5"></i>
           <span>Resume</span>
         </a>
@@ -77,34 +83,34 @@
     </div>
   </header>
 
-  <main class="relative z-10 pt-24 space-y-28 md:space-y-36">
+  <main class="relative z-10 pt-28 space-y-28 md:space-y-36">
 
     <!-- ========================================== -->
-    <!-- HERO SECTION (Clean, Balanced & Professional) -->
+    <!-- HERO SECTION (Clean, Separated & Grounded) -->
     <!-- ========================================== -->
-    <section id="hero" class="max-w-6xl mx-auto px-6 pt-10 md:pt-16">
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+    <section id="hero" class="max-w-6xl mx-auto px-6 pt-8 md:pt-16">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-14 items-center">
         
-        <!-- Left Side: Professional Headline & Actions (7 cols) -->
+        <!-- Left Column: Headline, Bio & Verified Links (7 cols) -->
         <div class="lg:col-span-7 space-y-6">
           
-          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-mono text-[#00E5C3]">
+          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/5 border border-white/10 text-xs font-mono text-[#00E5C3]">
             <span class="w-2 h-2 rounded-full bg-[#00E5C3] animate-pulse"></span>
-            <span>Data Analyst | Business Intelligence</span>
+            <span>DATA ANALYST | BUSINESS INTELLIGENCE</span>
           </div>
 
-          <h1 class="font-display text-4xl sm:text-5xl lg:text-[54px] font-bold tracking-tight text-white leading-[1.12]">
-            Turning Complex Data Into <span class="text-[#00E5C3]">Meaningful Decisions.</span>
+          <h1 class="font-display text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-white leading-[1.12]">
+            Turning Data Into <span class="text-[#00E5C3]">Meaningful Business Insights.</span>
           </h1>
 
           <p class="text-sm sm:text-base text-zinc-400 leading-relaxed max-w-xl">
-            I am <strong class="text-white">Tarunkumar Mylipilli</strong>, based in Hyderabad, India. I specialize in identifying patterns, evaluating business problems, and presenting actionable insights using <strong class="text-white">SQL</strong>, <strong class="text-white">Microsoft Excel</strong>, and <strong class="text-white">Power BI</strong>.
+            I combine a software development background with analytical problem-solving to explore data, identify patterns, and communicate meaningful insights. My work includes SQL-driven IPL strategy analysis and Excel-based IT support ticket analysis.
           </p>
 
-          <!-- CTAs -->
-          <div class="flex flex-wrap items-center gap-3 pt-2">
+          <!-- Action Buttons -->
+          <div class="flex flex-wrap items-center gap-3.5 pt-2">
             <a href="#projects" class="px-5 py-3 rounded-xl font-semibold text-xs sm:text-sm bg-[#00E5C3] text-[#080B12] hover:bg-[#00cfae] transition flex items-center gap-2">
-              <span>Explore Projects</span>
+              <span>Explore My Projects</span>
               <i data-lucide="arrow-down" class="w-4 h-4"></i>
             </a>
 
@@ -115,7 +121,7 @@
           </div>
 
           <!-- Social Links -->
-          <div class="flex items-center gap-5 pt-2 text-xs font-mono text-zinc-400">
+          <div class="flex items-center gap-6 pt-2 text-xs font-mono text-zinc-400">
             <a href="https://github.com/Tarunkumar-Mylipilli" target="_blank" class="hover:text-[#00E5C3] transition flex items-center gap-1.5">
               <i data-lucide="github" class="w-4 h-4"></i>
               <span>GitHub</span>
@@ -126,15 +132,15 @@
             </a>
             <a href="mailto:mylipillitarunkumar@gmail.com" class="hover:text-[#00E5C3] transition flex items-center gap-1.5">
               <i data-lucide="mail" class="w-4 h-4"></i>
-              <span>Email</span>
+              <span>mylipillitarunkumar@gmail.com</span>
             </a>
           </div>
 
         </div>
 
-        <!-- Right Side: Clean, High-End Portrait Card (5 cols) -->
+        <!-- Right Column: Clean Editorial Photo Frame (5 cols) -->
         <div class="lg:col-span-5 flex justify-center">
-          <div class="relative w-full max-w-sm rounded-2xl p-2.5 bg-[#0D131F] border border-white/10 shadow-2xl">
+          <div class="relative w-full max-w-sm rounded-2xl p-2.5 bg-[#101722] border border-white/10 shadow-2xl">
             
             <div class="relative aspect-[4/5] rounded-xl overflow-hidden bg-black">
               <img 
@@ -144,8 +150,8 @@
               />
               <div class="absolute inset-0 bg-gradient-to-t from-[#080B12]/80 via-transparent to-transparent"></div>
 
-              <!-- Sleek Bottom Label -->
-              <div class="absolute bottom-3 left-3 right-3 p-3 rounded-lg bg-[#080B12]/85 backdrop-blur-md border border-white/10 flex items-center justify-between">
+              <!-- Clean Grounded Label -->
+              <div class="absolute bottom-3 left-3 right-3 p-3 rounded-lg bg-[#080B12]/90 backdrop-blur-md border border-white/10 flex items-center justify-between">
                 <div>
                   <div class="text-xs font-bold text-white">Tarunkumar Mylipilli</div>
                   <div class="text-[10px] font-mono text-zinc-400">Hyderabad, India • Data Analyst</div>
@@ -163,10 +169,10 @@
     <!-- ========================================== -->
     <!-- CLEAN METRICS TICKER                       -->
     <!-- ========================================== -->
-    <div class="border-y border-white/5 py-4 bg-[#0D131F]/50 overflow-hidden">
+    <div class="border-y border-white/5 py-4 bg-[#101722]/60 overflow-hidden">
       <div class="marquee-track">
         <div class="marquee-content font-mono text-xs uppercase tracking-widest text-zinc-400">
-          <span class="text-white">RCB IPL SQL ANALYTICS (255 MATCHES)</span>
+          <span class="text-white">RCB IPL STRATEGY ANALYSIS (255 MATCHES)</span>
           <span class="text-[#00E5C3]">✦</span>
           <span class="text-white">IT SUPPORT TICKET DASHBOARD (97K+ RECORDS)</span>
           <span class="text-[#00E5C3]">✦</span>
@@ -176,11 +182,11 @@
           <span class="text-[#00E5C3]">✦</span>
           <span class="text-white">POWER BI & DATA VISUALIZATION</span>
           <span class="text-[#00E5C3]">✦</span>
-          <span class="text-white">FULL-STACK WEB DEVELOPMENT ROOTS</span>
+          <span class="text-white">SOFTWARE DEVELOPMENT FOUNDATION</span>
           <span class="text-[#00E5C3]">✦</span>
         </div>
         <div class="marquee-content font-mono text-xs uppercase tracking-widest text-zinc-400" aria-hidden="true">
-          <span class="text-white">RCB IPL SQL ANALYTICS (255 MATCHES)</span>
+          <span class="text-white">RCB IPL STRATEGY ANALYSIS (255 MATCHES)</span>
           <span class="text-[#00E5C3]">✦</span>
           <span class="text-white">IT SUPPORT TICKET DASHBOARD (97K+ RECORDS)</span>
           <span class="text-[#00E5C3]">✦</span>
@@ -190,7 +196,7 @@
           <span class="text-[#00E5C3]">✦</span>
           <span class="text-white">POWER BI & DATA VISUALIZATION</span>
           <span class="text-[#00E5C3]">✦</span>
-          <span class="text-white">FULL-STACK WEB DEVELOPMENT ROOTS</span>
+          <span class="text-white">SOFTWARE DEVELOPMENT FOUNDATION</span>
           <span class="text-[#00E5C3]">✦</span>
         </div>
       </div>
@@ -200,7 +206,7 @@
     <!-- ABOUT ME SECTION                           -->
     <!-- ========================================== -->
     <section id="about" class="max-w-5xl mx-auto px-6">
-      <div class="pro-card p-8 sm:p-10 space-y-5">
+      <div class="portfolio-card p-8 sm:p-10 space-y-5">
         <span class="text-xs font-mono uppercase tracking-widest text-[#00E5C3] font-semibold block">About Me</span>
         <h2 class="font-display text-2xl sm:text-3xl font-bold text-white">
           Analytical Focus with Software Engineering Grounding
@@ -236,14 +242,14 @@
     </section>
 
     <!-- ========================================== -->
-    <!-- FEATURED PROJECTS (Clean, Prominent Cards) -->
+    <!-- FEATURED PROJECTS                          -->
     <!-- ========================================== -->
     <section id="projects" class="max-w-6xl mx-auto px-6">
       
       <div class="space-y-3 mb-10">
         <span class="text-xs font-mono uppercase tracking-widest text-[#00E5C3] font-semibold block">Featured Work</span>
         <h2 class="font-display text-3xl font-bold text-white">
-          Core Analytical Case Studies
+          Primary Analytics Projects
         </h2>
         <p class="text-xs sm:text-sm text-zinc-400 max-w-xl">
           Detailed case studies grounded in verified analytical datasets, SQL scripts, and Microsoft Excel dashboards.
@@ -253,7 +259,7 @@
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
         
         <!-- PROJECT 1: IPL Strategy Analysis Using SQL -->
-        <div class="pro-card card-rcb p-7 flex flex-col justify-between">
+        <div class="portfolio-card card-rcb p-7 flex flex-col justify-between">
           <div class="space-y-4">
             <div class="flex items-center justify-between text-xs font-mono">
               <span class="px-2.5 py-0.5 rounded-full bg-rose-500/10 text-rose-400 border border-rose-500/20">
@@ -307,7 +313,7 @@
         </div>
 
         <!-- PROJECT 2: IT Support Ticket Analysis Using Excel -->
-        <div class="pro-card card-ticket p-7 flex flex-col justify-between">
+        <div class="portfolio-card card-ticket p-7 flex flex-col justify-between">
           <div class="space-y-4">
             <div class="flex items-center justify-between text-xs font-mono">
               <span class="px-2.5 py-0.5 rounded-full bg-teal-500/10 text-[#00E5C3] border border-teal-500/20">
@@ -364,10 +370,10 @@
     </section>
 
     <!-- ========================================== -->
-    <!-- LIVE ANALYTICS PREVIEW (Clean Chart)       -->
+    <!-- INTERACTIVE DATA LAB (Live Chart)          -->
     <!-- ========================================== -->
     <section id="live-lab" class="max-w-6xl mx-auto px-6">
-      <div class="pro-card p-6 sm:p-10">
+      <div class="portfolio-card p-6 sm:p-10">
         
         <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-5 border-b border-white/10">
           <div>
@@ -386,7 +392,7 @@
         </div>
 
         <div class="py-4 text-sm font-semibold text-white" id="chart-title">
-          IPL Strategy Analysis: Over-by-Over Run Rate & Scoring Trajectory
+          IPL Strategy Analysis: Over-by-Over Run Rate Across Match Phases
         </div>
 
         <!-- Badges -->
@@ -430,7 +436,7 @@
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
         
         <!-- SQL -->
-        <div class="pro-card p-6 space-y-3">
+        <div class="portfolio-card p-6 space-y-3">
           <div class="flex items-center gap-2.5">
             <i data-lucide="database" class="w-4 h-4 text-[#00E5C3]"></i>
             <h3 class="font-display font-bold text-base text-white">SQL & Databases</h3>
@@ -441,7 +447,7 @@
         </div>
 
         <!-- Excel -->
-        <div class="pro-card p-6 space-y-3">
+        <div class="portfolio-card p-6 space-y-3">
           <div class="flex items-center gap-2.5">
             <i data-lucide="file-spreadsheet" class="w-4 h-4 text-[#8B5CF6]"></i>
             <h3 class="font-display font-bold text-base text-white">Microsoft Excel</h3>
@@ -452,7 +458,7 @@
         </div>
 
         <!-- BI & Web Dev -->
-        <div class="pro-card p-6 space-y-3">
+        <div class="portfolio-card p-6 space-y-3">
           <div class="flex items-center gap-2.5">
             <i data-lucide="bar-chart-2" class="w-4 h-4 text-teal-400"></i>
             <h3 class="font-display font-bold text-base text-white">BI & Web Development</h3>
@@ -477,7 +483,7 @@
           <h2 class="font-display text-2xl font-bold text-white mt-1">Professional Experience</h2>
         </div>
 
-        <div class="pro-card p-6 space-y-4">
+        <div class="portfolio-card p-6 space-y-4">
           <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 border-b border-white/5 pb-3">
             <div>
               <h3 class="font-display font-bold text-base text-white">Freelance Frontend Developer</h3>
@@ -499,7 +505,7 @@
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
         
         <!-- Education -->
-        <div class="pro-card p-6 space-y-4">
+        <div class="portfolio-card p-6 space-y-4">
           <span class="text-xs font-mono uppercase tracking-widest text-[#00E5C3] font-semibold block">Education</span>
           
           <div class="space-y-3 text-xs">
@@ -519,7 +525,7 @@
         </div>
 
         <!-- Certifications -->
-        <div class="pro-card p-6 space-y-4">
+        <div class="portfolio-card p-6 space-y-4">
           <span class="text-xs font-mono uppercase tracking-widest text-[#8B5CF6] font-semibold block">Certifications</span>
           
           <div class="space-y-3 text-xs">
@@ -542,7 +548,7 @@
     <!-- CONTACT SECTION                            -->
     <!-- ========================================== -->
     <section id="contact" class="max-w-4xl mx-auto px-6 pb-20">
-      <div class="pro-card p-8 sm:p-12 space-y-6">
+      <div class="portfolio-card p-8 sm:p-12 space-y-6">
         
         <div>
           <span class="text-xs font-mono uppercase tracking-widest text-[#00E5C3] font-semibold block">Get In Touch</span>
