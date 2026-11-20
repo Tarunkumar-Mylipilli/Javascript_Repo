@@ -117,7 +117,8 @@ FROM VenueStats;`
     ],
     resources: {
       githubUrl: "https://github.com/Tarunkumar-Mylipilli",
-      note: "Excel workbook, cleaned data sheets, pivot tables, and dashboard documentation available in GitHub repository."
+      linkedinUrl: "https://www.linkedin.com/posts/tarunkumar-mylipilli_my-first-data-science-project-it-ticket-activity-7498977089455394818-TDnL?utm_source=share&utm_medium=member_desktop&rcm=ACoAAGFuSfMBpOCHIj1iv9-G3HhFnm0xyafFDFQ",
+      note: "Excel workbook, cleaned data sheets, pivot tables, and dashboard documentation published on LinkedIn and GitHub repository."
     }
   }
 };
@@ -329,11 +330,20 @@ const initModals = () => {
           </ul>
         </div>
 
-        <div class="pt-4 border-t border-white/10 flex items-center justify-between">
+        <div class="pt-4 border-t border-white/10 flex flex-wrap items-center justify-between gap-3">
           <div class="text-xs text-zinc-500 font-mono">${data.resources.note}</div>
-          <a href="${data.resources.githubUrl}" target="_blank" class="px-4 py-2 rounded-lg bg-white text-black font-semibold text-xs hover:bg-zinc-200 transition">
-            View on GitHub
-          </a>
+          <div class="flex items-center gap-3">
+            ${data.resources.linkedinUrl ? `
+              <a href="${data.resources.linkedinUrl}" target="_blank" class="px-4 py-2 rounded-lg bg-[#00E5C3] text-[#080B12] font-semibold text-xs hover:bg-[#00cfae] transition flex items-center gap-1.5">
+                <i data-lucide="linkedin" class="w-3.5 h-3.5"></i>
+                <span>View LinkedIn Post</span>
+              </a>
+            ` : ''}
+            <a href="${data.resources.githubUrl}" target="_blank" class="px-4 py-2 rounded-lg bg-white text-black font-semibold text-xs hover:bg-zinc-200 transition flex items-center gap-1.5">
+              <i data-lucide="github" class="w-3.5 h-3.5"></i>
+              <span>View on GitHub</span>
+            </a>
+          </div>
         </div>
       </div>
     `;
