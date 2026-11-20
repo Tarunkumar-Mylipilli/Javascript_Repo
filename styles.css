@@ -1,121 +1,186 @@
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
 
 :root {
-  --bg-primary: #080B12;
-  --bg-secondary: #101722;
-  --bg-card: rgba(16, 23, 34, 0.75);
-  --bg-card-hover: rgba(22, 32, 48, 0.9);
-  --border-subtle: rgba(255, 255, 255, 0.08);
-  --border-hover: rgba(0, 229, 195, 0.35);
-  --accent-teal: #00E5C3;
-  --accent-purple: #8B5CF6;
-  --text-main: #F5F7FA;
-  --text-muted: #9CA3AF;
-  --text-dim: #6B7280;
+  --bg-primary: #05070c;
+  --bg-secondary: #090e17;
+  --accent-cyan: #38bdf8;
+  --accent-indigo: #818cf8;
+  --accent-emerald: #34d399;
+  --accent-amber: #fbbf24;
+  --mouse-x: 50%;
+  --mouse-y: 50%;
 }
 
 * {
   box-sizing: border-box;
-  margin: 0;
-  padding: 0;
   scroll-behavior: smooth;
 }
 
 body {
   font-family: 'Plus Jakarta Sans', sans-serif;
   background-color: var(--bg-primary);
-  color: var(--text-main);
+  color: #e2e8f0;
   overflow-x: hidden;
-  line-height: 1.6;
-  -webkit-font-smoothing: antialiased;
+  cursor: default;
 }
 
-.font-display {
-  font-family: 'Space Grotesk', sans-serif;
+/* Custom Interactive Magnetic Cursor (Desktop) */
+@media (min-width: 768px) {
+  body {
+    cursor: default;
+  }
+  #custom-cursor {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 8px;
+    height: 8px;
+    background-color: #38bdf8;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+    transition: width 0.2s, height 0.2s, background-color 0.2s, opacity 0.2s;
+  }
+  #cursor-blur {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 38px;
+    height: 38px;
+    border: 1.5px solid rgba(56, 189, 248, 0.45);
+    background: radial-gradient(circle, rgba(56, 189, 248, 0.15) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9998;
+    transform: translate(-50%, -50%);
+    transition: transform 0.12s ease-out, width 0.25s, height 0.25s, border-color 0.25s;
+  }
 }
 
 .font-mono {
   font-family: 'JetBrains Mono', monospace;
 }
 
-/* Ambient Subtle Lighting Glow */
-.ambient-lighting {
+/* Background Cyber Grid & Particle Canvas */
+#cyber-canvas {
   position: fixed;
   top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 1200px;
-  height: 700px;
-  background: radial-gradient(circle, rgba(0, 229, 195, 0.06) 0%, rgba(139, 92, 246, 0.03) 45%, transparent 70%);
-  pointer-events: none;
+  left: 0;
+  width: 100%;
+  height: 100%;
   z-index: 0;
+  pointer-events: none;
+  opacity: 0.55;
 }
 
-/* Premium Card with Restrained Glassmorphism */
-.premium-card {
-  background: var(--bg-card);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  border: 1px solid var(--border-subtle);
-  border-radius: 1.25rem;
-  transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+/* Bento Spotlight Card Hover Effect (Dribbble/Linear style) */
+.spotlight-card {
   position: relative;
-}
-
-.premium-card:hover {
-  background: var(--bg-card-hover);
-  border-color: var(--border-hover);
-  transform: translateY(-3px);
-  box-shadow: 0 16px 36px -12px rgba(0, 0, 0, 0.7),
-              0 0 20px -4px rgba(0, 229, 195, 0.12);
-}
-
-/* Project Card Themes */
-.card-rcb {
-  border-left: 3px solid #f43f5e;
-}
-.card-rcb:hover {
-  border-color: rgba(244, 63, 94, 0.4);
-  box-shadow: 0 16px 36px -12px rgba(0, 0, 0, 0.7),
-              0 0 20px -4px rgba(244, 63, 94, 0.12);
-}
-
-.card-ticket {
-  border-left: 3px solid var(--accent-teal);
-}
-
-/* Subtle Teal Pill */
-.teal-pill {
-  background: rgba(0, 229, 195, 0.08);
-  border: 1px solid rgba(0, 229, 195, 0.25);
-  color: var(--accent-teal);
-}
-
-/* Purple Pill */
-.purple-pill {
-  background: rgba(139, 92, 246, 0.08);
-  border: 1px solid rgba(139, 92, 246, 0.25);
-  color: #a78bfa;
-}
-
-/* Clean Custom Scrollbar */
-::-webkit-scrollbar {
-  width: 6px;
-}
-::-webkit-scrollbar-track {
-  background: #080B12;
-}
-::-webkit-scrollbar-thumb {
-  background: #1f2937;
-  border-radius: 3px;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: var(--accent-teal);
-}
-
-/* Modal styling */
-.modal-overlay {
-  background: rgba(8, 11, 18, 0.88);
+  background: rgba(11, 16, 26, 0.75);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 1.25rem;
+  overflow: hidden;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease;
+}
+
+.spotlight-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(
+    600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+    rgba(56, 189, 248, 0.12),
+    transparent 40%
+  );
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.spotlight-card:hover::before {
+  opacity: 1;
+}
+
+.spotlight-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(56, 189, 248, 0.35);
+  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.8),
+              0 0 25px -5px rgba(56, 189, 248, 0.15);
+}
+
+/* 3D Tilt Container for Hero Photo */
+.tilt-card-wrapper {
+  perspective: 1000px;
+}
+.tilt-card {
+  transition: transform 0.15s ease-out;
+  transform-style: preserve-3d;
+}
+
+/* Infinite Marquee Ticker (Dribbble staple) */
+.marquee-track {
+  display: flex;
+  overflow: hidden;
+  user-select: none;
+  gap: 2rem;
+  mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+}
+.marquee-content {
+  flex-shrink: 0;
+  display: flex;
+  justify-content: space-around;
+  min-width: 100%;
+  gap: 2rem;
+  animation: scroll-marquee 28s linear infinite;
+}
+.marquee-track:hover .marquee-content {
+  animation-play-state: paused;
+}
+@keyframes scroll-marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(calc(-100% - 2rem)); }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 7px;
+}
+::-webkit-scrollbar-track {
+  background: #05070c;
+}
+::-webkit-scrollbar-thumb {
+  background: #1e293b;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #38bdf8;
+}
+
+/* Pulse radar ring */
+@keyframes pulse-ring {
+  0% { transform: scale(0.95); opacity: 0.8; }
+  50% { transform: scale(1.3); opacity: 0; }
+  100% { transform: scale(0.95); opacity: 0; }
+}
+.pulse-ring-element {
+  animation: pulse-ring 2s infinite;
+}
+
+/* Float Animations */
+@keyframes float-y {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-9px); }
+}
+.animate-float {
+  animation: float-y 4.5s ease-in-out infinite;
+}
+.animate-float-delayed {
+  animation: float-y 5.5s ease-in-out 1.5s infinite;
 }
